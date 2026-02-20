@@ -24,7 +24,7 @@ header{
 }
 
 header h1{
-  color: #0000ff;
+  color: black;
   margin: 0;
 }
 
@@ -68,11 +68,10 @@ p{
 
 a{
   color: blue;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:hover{
-  color: white;
   text-decoration: underline;
 }
 
