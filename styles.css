@@ -18,7 +18,7 @@ body::before {
 
 header{
   backgorund-color: #333;
-  color: white;
+  color: grey;
   padding: 20px;
   text-align: center;
 }
@@ -29,7 +29,7 @@ header h1{
 }
 
 nav a{
-  color: blue;
+  color: black;
   text-decoration: underline;
   margin: 0 10px;
 }
