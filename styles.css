@@ -29,8 +29,8 @@ header h1{
 }
 
 nav a{
-  color: black;
-  text-decoration: none;
+  color: blue;
+  text-decoration: underline;
   margin: 0 10px;
 }
 
