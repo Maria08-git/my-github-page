@@ -24,13 +24,12 @@ header{
 }
 
 header h1{
-  color: black;
   margin: 0;
 }
 
 nav a{
   color: white;
-  text-decoration: underline;
+  text-decoration: none;
   margin: 0 10px;
 }
 
