@@ -1,90 +1,171 @@
+/* ========== Base & Theme ========== */
+:root{
+  --bg: #fff6fb;
+  --text: #333333;
+  --muted: #6c757d;
+  --accent: #ff4081;   /* Picked via color picker */
+  --accent-2: #ff80ab;
+  --bg-image: url('tuscany.jpeg');
+  --bg-overlay: rgba(255,255,255,0.62);
+  --dark: #121212;
+  --card-bg: #ffffff;
+  --border: #f0e6ee;
+}
+
+[data-theme="dark"]{
+  --bg: #0f0f13;
+  --text: #eaeaea;
+  --muted: #b0b0b0;
+  --card-bg: #151821;
+  --border: #232838;
+  --bg-overlay: rgba(0,0,0,0.6);
+}
+
+*{ box-sizing: border-box; }
+html, body { height: 100%; }
 body{
-  background-image: url("tuscany.jpeg");
-  background-size: cover;
-  backgorund-position: center;
-  background-attachment: fixed;
-  margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background-color: var(--bg);
+  /* layered background: overlay + image (fallback to color) */
+  background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), var(--bg-image);
+  background-size: cover, cover;
+  background-position: center center, center center;
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed, fixed;
+  color: var(--text);
+  line-height: 1.6;
+  transition: background-color .25s ease, color .25s ease;
 }
 
-body::before 
-{
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.3); 
-  z-index: -1;
+/* ========== Helpers ========== */
+.text-accent{ color: var(--accent) !important; }
+.border-accent{ border-color: var(--accent) !important; }
+.btn-accent{
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: .6rem 1rem;
 }
-
-header
-{
-  backgorund-color: #333;
-  color: grey;
-  padding: 20px;
-  text-align: center;
-}
-
-header h1
-{
-  margin: 0;
-}
-
-nav a
-{
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
-}
-
-nav a:hover
-{
-  color: blue;
-  text-decoration: underline;
-}
-
-main{
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-main img{
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 20px0;
-}
-
-footer{
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%
-}
-
-p{
-  font-size: 1.1em;
-}
-
-a{
-  color: blue;
-  text-decoration: none;
-}
-
-a:hover{
-  text-decoration: underline;
-}
-
-img{
-  border: 5px solid #4CAF50;
+.btn-accent:hover{ filter: brightness(0.95); }
+.btn-outline-accent{
+  border: 2px solid var(--accent);
+  color: var(--accent);
   border-radius: 10px;
 }
-
-main a[href^="mailto:"]{
-  color: #ff5722;
-  font-weight: bold;
+.btn-outline-accent:hover{
+  background: var(--accent);
+  color: #fff;
 }
+.section-title{
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ========== Navbar ========== */
+.navbar-brand{ font-weight: 700; letter-spacing: .2px; }
+.logo-dot{
+  width: 14px; height: 14px; display: inline-block; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  vertical-align: middle;
+}
+
+/* Active link highlight */
+.nav-link.active, .nav-link:hover{ color: var(--accent) !important; }
+
+/* Ensure nav links inherit color normally and have a visible focus state */
+.navbar .nav-link{ color: inherit; }
+.nav-link:focus, .btn:focus{ outline: 3px solid rgba(255,64,129,0.14); outline-offset: 3px; }
+
+/* ========== Hero ========== */
+.hero{
+  min-height: 52vh;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  padding: 80px 0;
+}
+
+/* ========== Cards & Sections ========== */
+.card{ background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; }
+.card .price{ font-weight: 700; color: var(--accent); }
+.service-card .card-footer{ border-top: 1px solid var(--border); }
+.feature-card{
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.feature-card:hover{ transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.1); }
+
+/* ========== Table Accent ========== */
+.table-accent{ background: var(--accent); }
+
+/* ========== Footer ========== */
+.footer{ color: #fff; }
+.footer .socials a{ font-size: 1.25rem; }
+
+/* ========== Gallery ========== */
+.gallery-grid img{ width: 100%; height: auto; object-fit: cover; }
+
+/* ========== Floating WhatsApp ========== */
+.whatsapp-float{
+  position: fixed; right: 16px; bottom: 16px; z-index: 1050;
+  background: #25D366; color: #fff; width: 56px; height: 56px;
+  display: grid; place-items: center; border-radius: 50%;
+  box-shadow: 0 8px 18px rgba(0,0,0,.2);
+  transition: transform .2s ease;
+}
+.whatsapp-float:hover{ transform: translateY(-2px); }
+
+/* ========== Forms ========== */
+.form-control, .form-select, .btn{ border-radius: 10px; }
+
+/* ========== Lightbox Modal ========== */
+#lightboxModal .modal-content{ background: rgba(0,0,0,.85) !important; }
+
+/* ========== Animations (subtle) ========== */
+.fade-in-up{
+  opacity: 0; transform: translateY(12px);
+  animation: fadeUp .6s ease .1s forwards;
+}
+@keyframes fadeUp{ to{ opacity: 1; transform: translateY(0); } }
+
+/* Dark Theme Fixes */
+[data-theme="dark"] {
+  --bs-body-bg: #121212;
+  --bs-body-color: #e0e0e0;
+  --card-bg: rgba(30, 30, 30, 0.8);
+  --card-border-color: rgba(255, 255, 255, 0.05);
+  --text-color: #f8f9fa;
+  --heading-color: #ffd27f;
+}
+ 
+/* Cards */
+[data-theme="dark"] .card {
+  background: var(--card-bg);
+  border-color: var(--card-border-color);
+  color: var(--text-color);
+}
+ 
+/* Headings */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] .section-title {
+  color: var(--heading-color) !important;
+}
+ 
+/* Paragraphs + general text */
+[data-theme="dark"] p,
+[data-theme="dark"] li,
+[data-theme="dark"] .text-muted {
+  color: var(--text-color) !important;
+}
+ 
+/* Price text */
+[data-theme="dark"] .price {
+  color: #ffcc66 !important;
+}
+ 
+/* Buttons (optional tweak) */
+[data-theme="dark"] .btn-primary {
+  background: #1e88e5;
+}
+ 
